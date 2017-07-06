@@ -4,7 +4,7 @@ import requests
 
 
 def get_user_id(insta_username) :
-    request_url="%s/users/search?q=%s&access_token=%s" % (BASE_URL,insta_username,APP_ACCESS_TOKEN)
+    request_url="%susers/search?q=%s&access_token=%s" % (BASE_URL,insta_username,APP_ACCESS_TOKEN)
     print "request url is %s" % (request_url)
     user_info=requests.get(request_url).json()
 
