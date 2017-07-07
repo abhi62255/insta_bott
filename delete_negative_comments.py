@@ -38,7 +38,7 @@ def delete_negative_comment():
               else:
                 print 'There is a problem \n'
            else:
-            print "%s is a good comment  " % (comment_info['data'][a]['text'])
+            print "Comment with id %s : %s is a good comment  " % (comment[a],comment_info['data'][a]['text'])
             a = a+1
     else:
       print 'There are no existing comments on the post!'
