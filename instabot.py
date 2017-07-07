@@ -7,13 +7,14 @@ from post_a_comment import post_a_comment
 from delete_negative_comments import delete_negative_comment
 from constants import insta_username
 from get_user_id import get_user_id
+from comment_list import comment_list
 from get_users_post import get_users_post
 
 def menu():
     while True:
         choice = raw_input(
             " 1) To get own info  \n 2) To get own post \n 3) To get friends id \n 4) To get friends info \n 5) To Get friend post id \n 6) To Like post \n 7) To comment on post \n "
-            "8) To Delete negative comments from your post\n 9) To view recent Media id like by You\n 10) To exit application\n ENTER YOUR CHOICE  :- ")
+            "8) To Delete negative comments from your post\n 9) To view recent Media id like by You\n 10) To view comment of the your friends post \n 11) To exit application\n ENTER YOUR CHOICE  :- ")
         if choice.isdigit() == True:
             choice=int(choice)
         if choice == 1:
@@ -34,6 +35,8 @@ def menu():
             delete_negative_comment()
         elif choice == 9:
             recent_media_like()
+        elif choice == 10:
+            comment_list()
         elif choice == 10:
             break
         else:
