@@ -15,5 +15,6 @@ def get_user_id(insta_username) :
             return None
     else:
         print("Return code is other than 200 recived \n")
+        print user_info
         exit()
 
