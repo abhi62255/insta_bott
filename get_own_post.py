@@ -7,14 +7,47 @@ def get_own_post():
     print 'GET request url : %s' % (request_url)
     own_media = requests.get(request_url).json()
 
+
     if own_media['meta']['code'] == 200:
         if len(own_media['data']):
-            image_name=own_media['data'][0]['id']+'.jpeg'
-            image_url = own_media['data'][0]['images']['standard_resolution']['url']
-            urllib.urlretrieve(image_url,image_name)
-            return own_media['data'][0]['id']
+            choice = 1
+            while True:
+                choice = int(raw_input(" 1) To get recent Post id \n 2) To get Max liked post ID\n 3) To get Min liked photo \n 4) To exit \n ENTER YOUR CHOICE : "))
+                if choice == 1:
+                    image_name = own_media['data'][0]['id'] + '.jpeg'
+                    image_url = own_media['data'][0]['images']['standard_resolution']['url']
+                    urllib.urlretrieve(image_url, image_name)
+                    return own_media['data'][0]['id']
+                elif choice == 2:
+                    count = 1
+                    max_like_id = own_media['data'][0]['id']
+                    while len(own_media['data']) > count:
+                        if own_media['data'][count - 1]['likes']['count'] < own_media['data'][count]['likes']['count']:
+                            max_like_id = own_media['data'][count]['id']
+
+                        count = count + 1
+                    image_name = own_media['data'][0]['id'] + '.jpeg'
+                    image_url = own_media['data'][0]['images']['standard_resolution']['url']
+                    urllib.urlretrieve(image_url, image_name)
+                    return max_like_id
+                elif choice == 3:
+                    count = 1
+                    max_like_id = own_media['data'][0]['id']
+                    while len(own_media['data']) > count:
+                        if own_media['data'][count - 1]['likes']['count'] > own_media['data'][count]['likes']['count']:
+                            max_like_id = own_media['data'][count]['id']
+
+                        count = count + 1
+                    image_name = own_media['data'][0]['id'] + '.jpeg'
+                    image_url = own_media['data'][0]['images']['standard_resolution']['url']
+                    urllib.urlretrieve(image_url, image_name)
+                    return max_like_id
+                elif choice == 4:
+                    break
+                else:
+                    print "\n\n[[Select From Valid Options]]"
         else:
-            print "Post does not exist \n"
+            print "User does not exists \n"
     else:
-        print "status code is other than 200 recived \n"
+        print "Status code other than 200 recived \n"
         return None
