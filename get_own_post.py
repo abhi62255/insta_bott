@@ -12,7 +12,8 @@ def get_own_post():
         if len(own_media['data']):
             choice = 1
             while True:
-                choice = int(raw_input(" 1) To get recent Post id \n 2) To get Max liked post ID\n 3) To get Min liked photo \n 4) To exit \n ENTER YOUR CHOICE : "))
+                choice = int(raw_input(" 1) To get recent Post id \n 2) To get Max liked post ID\n 3) To get Min liked post \n"
+                                       " 4) To get Max commented post \n 5) To get Min commented post\n 6) To exit \n ENTER YOUR CHOICE : "))
                 if choice == 1:
                     image_name = own_media['data'][0]['id'] + '.jpeg'
                     image_url = own_media['data'][0]['images']['standard_resolution']['url']
@@ -20,29 +21,53 @@ def get_own_post():
                     return own_media['data'][0]['id']
                 elif choice == 2:
                     count = 1
-                    max_like_id = own_media['data'][0]['id']
+                    post_id = own_media['data'][0]['id']
                     while len(own_media['data']) > count:
                         if own_media['data'][count - 1]['likes']['count'] < own_media['data'][count]['likes']['count']:
-                            max_like_id = own_media['data'][count]['id']
+                            post_id = own_media['data'][count]['id']
 
                         count = count + 1
                     image_name = own_media['data'][0]['id'] + '.jpeg'
                     image_url = own_media['data'][0]['images']['standard_resolution']['url']
                     urllib.urlretrieve(image_url, image_name)
-                    return max_like_id
+                    return post_id
                 elif choice == 3:
                     count = 1
-                    max_like_id = own_media['data'][0]['id']
+                    post_id = own_media['data'][0]['id']
                     while len(own_media['data']) > count:
                         if own_media['data'][count - 1]['likes']['count'] > own_media['data'][count]['likes']['count']:
-                            max_like_id = own_media['data'][count]['id']
+                            post_id = own_media['data'][count]['id']
 
                         count = count + 1
                     image_name = own_media['data'][0]['id'] + '.jpeg'
                     image_url = own_media['data'][0]['images']['standard_resolution']['url']
                     urllib.urlretrieve(image_url, image_name)
-                    return max_like_id
+                    return post_id
                 elif choice == 4:
+                    count = 1
+                    post_id = own_media['data'][0]['id']
+                    while len(own_media['data']) > count:
+                        if own_media['data'][count - 1]['comment']['count'] < own_media['data'][count]['comment']['count']:
+                            post_id = own_media['data'][count]['id']
+
+                        count = count + 1
+                    image_name = own_media['data'][0]['id'] + '.jpeg'
+                    image_url = own_media['data'][0]['images']['standard_resolution']['url']
+                    urllib.urlretrieve(image_url, image_name)
+                    return post_id
+                elif choice == 5:
+                    count = 1
+                    post_id = own_media['data'][0]['id']
+                    while len(own_media['data']) > count:
+                        if own_media['data'][count - 1]['comment']['count'] > own_media['data'][count]['comment']['count']:
+                            post_id = own_media['data'][count]['id']
+
+                        count = count + 1
+                    image_name = own_media['data'][0]['id'] + '.jpeg'
+                    image_url = own_media['data'][0]['images']['standard_resolution']['url']
+                    urllib.urlretrieve(image_url, image_name)
+                    return post_id
+                elif choice == 6:
                     break
                 else:
                     print "\n\n[[Select From Valid Options]]"

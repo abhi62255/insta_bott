@@ -26,29 +26,55 @@ def get_users_post(insta_username) :
                     return user_media['data'][0]['id']
                 elif choice == 2:
                     count = 1
-                    max_like_id = user_media['data'][0]['id']
+                    post_id = user_media['data'][0]['id']
                     while len(user_media['data']) > count:
                         if user_media['data'][count - 1]['likes']['count'] < user_media['data'][count]['likes']['count']:
-                            max_like_id = user_media['data'][count]['id']
+                            post_id = user_media['data'][count]['id']
 
                         count = count + 1
                     image_name = user_media['data'][0]['id'] + '.jpeg'
                     image_url = user_media['data'][0]['images']['standard_resolution']['url']
                     urllib.urlretrieve(image_url, image_name)
-                    return max_like_id
+                    return post_id
                 elif choice == 3:
                     count = 1
-                    max_like_id = user_media['data'][0]['id']
+                    post_id = user_media['data'][0]['id']
                     while len(user_media['data']) > count:
                         if user_media['data'][count - 1]['likes']['count'] > user_media['data'][count]['likes']['count']:
-                            max_like_id = user_media['data'][count]['id']
+                            post_id = user_media['data'][count]['id']
 
                         count = count + 1
                     image_name = user_media['data'][0]['id'] + '.jpeg'
                     image_url = user_media['data'][0]['images']['standard_resolution']['url']
                     urllib.urlretrieve(image_url, image_name)
-                    return max_like_id
+                    return post_id
                 elif choice == 4:
+                    count = 1
+                    post_id = user_media['data'][0]['id']
+                    while len(user_media['data']) > count:
+                        if user_media['data'][count - 1]['comment']['count'] < own_media['data'][count]['comment'][
+                            'count']:
+                            post_id = user_media['data'][count]['id']
+
+                        count = count + 1
+                    image_name = user_media['data'][0]['id'] + '.jpeg'
+                    image_url = user_media['data'][0]['images']['standard_resolution']['url']
+                    urllib.urlretrieve(image_url, image_name)
+                    return post_id
+                elif choice == 5:
+                    count = 1
+                    post_id = user_media['data'][0]['id']
+                    while len(user_media['data']) > count:
+                        if user_media['data'][count - 1]['comment']['count'] > own_media['data'][count]['comment'][
+                            'count']:
+                            post_id = user_media['data'][count]['id']
+
+                        count = count + 1
+                    image_name = user_media['data'][0]['id'] + '.jpeg'
+                    image_url = user_media['data'][0]['images']['standard_resolution']['url']
+                    urllib.urlretrieve(image_url, image_name)
+                    return post_id
+                elif choice == 6:
                     break
                 else:
                     print "\n\n[[Select From Valid Options]]"
