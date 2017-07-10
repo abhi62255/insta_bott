@@ -9,12 +9,13 @@ from constants import insta_username
 from get_user_id import get_user_id
 from comment_list import comment_list
 from get_users_post import get_users_post
+from sub_trends import sub_trends
 
 
 while True:
     choice = raw_input(             # Asking for inputs from user
         " 1) To get own info  \n 2) To get own post \n 3) To get friends id \n 4) To get friends info \n 5) To Get friend post id \n 6) To Like post \n 7) To comment on post \n "
-        "8) To Delete negative comments from your post\n 9) To view recent Media id like by You\n 10) To view comment of the your friends post \n 11) To exit application\n ENTER YOUR CHOICE  :- ")
+        "8) To Delete negative comments from your post\n 9) To view recent Media id like by You\n 10) To view comment of the your friends post \n 11) To find the Sub-trends of an event \n 12) To exit application\n ENTER YOUR CHOICE  :- ")
     if choice.isdigit() == True:
         choice=int(choice)
     if choice == 1:
@@ -38,6 +39,8 @@ while True:
     elif choice == 10:
         comment_list()             # Calling of comment_list() function
     elif choice == 11:
+        sub_trends()            # Calling of sub_trends() function
+    elif choice == 12:
         break
     else:
         print "\n\n[[Select From Valid Options]]"
