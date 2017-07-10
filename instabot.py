@@ -1,3 +1,4 @@
+from compare_comments import compare_comments
 from self_info import self_info
 from get_own_post import get_own_post
 from get_user_info import get_user_info
@@ -15,7 +16,7 @@ from sub_trends import sub_trends
 while True:
     choice = raw_input(             # Asking for inputs from user
         " 1) To get own info  \n 2) To get own post \n 3) To get friends id \n 4) To get friends info \n 5) To Get friend post id \n 6) To Like post \n 7) To comment on post \n "
-        "8) To Delete negative comments from your post\n 9) To view recent Media id like by You\n 10) To view comment of the your friends post \n 11) To find the Sub-trends of an event \n 12) To exit application\n ENTER YOUR CHOICE  :- ")
+        "8) To Delete negative comments from your post\n 9) To view recent Media id like by You\n 10) To view comment of the your friends post \n 11) To find the Sub-trends of an event\n 12) To compare Pos and Neg comments of your post\n 13) To exit application\n ENTER YOUR CHOICE  :- ")
     if choice.isdigit() == True:
         choice=int(choice)
     if choice == 1:
@@ -41,6 +42,8 @@ while True:
     elif choice == 11:
         sub_trends()            # Calling of sub_trends() function
     elif choice == 12:
+        compare_comments()              # Calling of compare_comments() function
+    elif choice == 13:
         break
     else:
         print "\n\n[[Select From Valid Options]]"
