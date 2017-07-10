@@ -23,7 +23,6 @@ def delete_negative_comment():          # Defination of delete_negative_comment(
 
   if comment_info['meta']['code'] == 200:           # Checking response from server
     if len(comment_info['data']):               # Checking for data in response
-        print(comment)
         a = 0
         while len(comment_info['data']) > a :
            blob = TextBlob(comment_info['data'][a]['text'], analyzer=NaiveBayesAnalyzer())          # Analyzing the data
