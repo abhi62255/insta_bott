@@ -1,6 +1,6 @@
 import requests
 from constants import BASE_URL,APP_ACCESS_TOKEN
-import emoji
+
 
 
 
@@ -18,14 +18,13 @@ def sub_trends():
 
     count = 1
     while len(media['data']) > count:
-        name.append(media['data'][count]['name'])
+        name.append(media['data'][count]['name'].encode("utf-8"))
         media_count.append(media['data'][count]['media_count'])
         count = count + 1
 
     count = 0
     while len(media['data'])-1 > count:
-        #print str(name[count])+" "+str(media_count[count])
-        print (emoji.emojize(name[count]))
+        print str(name[count])+" "+str(media_count[count])
         count = count + 1
 
 

@@ -13,13 +13,13 @@ def comment_list() :        # Function defination
     comment = []  # List to store comment
     a = 0
     while len(comment_info['data']) > a:
-        comment.append(comment_info['data'][a]['text'])         # Adding comments in list
+        comment.append(comment_info['data'][a]['text'].encode("utf-8"))         # Adding comments in list
         a = a + 1
 
     print "Comments  Are :"
     for temp in comment:
-        counter = 1
-        print str(counter) + ") "+str(temp)         # Geting output as comments of the post
-        counter = counter+1
+        print temp         # Geting output as comments of the post
 
     print '\n'
+
+
