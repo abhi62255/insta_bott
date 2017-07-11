@@ -22,7 +22,6 @@ def get_user_id(insta_username) :           # Defination of funnction get_user_i
             return user_info['data'][0]['id']           # Returning User ID
         else:
             print "User does not exist \n"
-            exit()
 
     else:
         print("Return code is other than 200 recived \n")
