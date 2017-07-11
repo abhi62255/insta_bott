@@ -13,7 +13,7 @@ def self_info():                # Defination of self_info() function
             print "Username : %s" % (user_info['data']['username'])
             print "Number of posts : %s" % (user_info['data']['counts']['media'])
             print "Followed by : %s " % (user_info['data']['counts']['followed_by'])
-            print "Follows : %s" % (user_info['data']['counts']['follows'])
+            print "Follows : %s \n" % (user_info['data']['counts']['follows'])
         else:
             print("User does not exist \n")
     else:

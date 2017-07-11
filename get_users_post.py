@@ -18,10 +18,11 @@ def get_users_post(insta_username) :            # Defination of function get_use
         if len(user_media['data']):             # Checking data responded form server
             choice = 1
             while True:
-                choice = int(raw_input(" 1) To get recent Post id \n 2) To get Max liked post ID\n 3) To get Min liked post \n"
-                                       " 4) To get Max commented Post \n 5) To get Min Commented Post \n 6) To exit \n ENTER YOUR CHOICE : "))
+                choice = raw_input(" 1) To get recent Post id \n 2) To get Max liked post ID\n 3) To get Min liked post \n"
+                                       " 4) To get Max commented Post \n 5) To get Min Commented Post \n 6) To exit \n ENTER YOUR CHOICE : ")
                         # asking input from user
-
+                if choice.isdigit() == True:
+                    choice = int(choice)
                 if choice == 1:
                     image_name = user_media['data'][0]['id'] + '.jpeg'
                     image_url = user_media['data'][0]['images']['standard_resolution']['url']

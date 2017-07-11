@@ -30,7 +30,6 @@ def delete_negative_comment():          # Defination of delete_negative_comment(
               request_url='%smedia/%s/comments/%s?access_token=%s' % (BASE_URL,media_id,comment[a],APP_ACCESS_TOKEN)            # Making URL to request
               print "DEL request url : %s" % (request_url)
               del_comment=requests.delete(request_url).json()               # Requesting To server
-              print(del_comment)
               if del_comment['meta']['code'] == 200 :           # Cheking response fromm server
                   print "Comment with id %s : %s is deleted" % (comment[a],comment_info['data'][a]['text'])
                   a = a+1

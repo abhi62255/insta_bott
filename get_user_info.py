@@ -21,6 +21,6 @@ def get_user_info(insta_username):          # Defination of function get_user_in
         else:
             print "user  does not exist \n"
     else:
-        print "Status code other than 200 recived \n"
+        print "Status code other than 200 received \n"
 
 
