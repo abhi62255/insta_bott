@@ -5,6 +5,8 @@ plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
 
+import unicodedata
+
 
 
 
@@ -20,14 +22,14 @@ def sub_trends():
         request_url='%stags/search?q=%s&access_token=%s' % (BASE_URL,tag,APP_ACCESS_TOKEN)
         print "Get request URL is : %s" % (request_url)
         media = requests.get(request_url).json()
-        #print media['data']
+
 
 
 
 
         count = 1
         while len(media['data']) > count:
-            name.append(media['data'][count]['name'].encode("utf-8"))
+            name.append(unicodedata.normalize('NFKD', media['data'][count]['name']).encode('ascii','ignore'))
             media_count.append(media['data'][count]['media_count'])
             count = count + 1
 
@@ -53,6 +55,3 @@ def sub_trends():
         ax.set_title('Sub-trends for an Event : ' + tag)
 
         plt.show()
-
-
-

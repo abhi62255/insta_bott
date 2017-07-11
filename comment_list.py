@@ -1,6 +1,7 @@
 from get_users_post import get_users_post
 from constants import insta_username,BASE_URL,APP_ACCESS_TOKEN
 import requests
+import unicodedata
                             # Importing functions and constants from other files
 
 
@@ -13,7 +14,7 @@ def comment_list() :        # Function defination
     comment = []  # List to store comment
     a = 0
     while len(comment_info['data']) > a:
-        comment.append(comment_info['data'][a]['text'].encode("utf-8"))         # Adding comments in list
+        comment.append(unicodedata.normalize('NFKD', comment_info['data'][a]['text']).encode('ascii','ignore')) # Adding comments in list
         a = a + 1
 
     print "Comments  Are :"
