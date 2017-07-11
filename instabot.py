@@ -12,6 +12,7 @@ from comment_list import comment_list
 from get_users_post import get_users_post
 from sub_trends import sub_trends
 
+
 def menu():
     while True:
         choice = raw_input(             # Asking for inputs from user
